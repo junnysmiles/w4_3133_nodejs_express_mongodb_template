@@ -39,23 +39,27 @@ app.get('/employee', async (req, res) => {
 //http://localhost:8081/employees/firstname/pritesh
 app.get('/employees/firstname/:name', async (req, res) => {
   const name = req.params.name
-  const employees = await employeeModel.find({firstname : name});
+  // const employees = await employeeModel.find({firstname : name});
   
   //Using Virtual Field Name
-  //console.log(employees[0].fullname)
+  // console.log(employees[0].fullname)
 
   //Using Instance method
-  //console.log(employees[0].getFullName())
+  // console.log(employees[0].getFullName())
+
+  //Using Instance method
+  // console.log(employees[0].getFormattedSalary())
 
   //Using Static method
-  //const employees = await employeeModel.getEmployeeByFirstName(name)
+  const employees = await employeeModel.getEmployeeByFirstName(name)
   
   //Using Query Helper
-  //const employees = await employeeModel.findOne().byFirstName(name)
+  // const employees = await employeeModel.findOne().byFirstName(name)
   
   try {
     if(employees.length != 0){
-      res.send(employees);
+      // res.send({...employees[0], 'fullname': employees[0].fullname});
+      res.send(employees)
     }else{
       res.send(JSON.stringify({status:false, message: "No data found"}))
     }

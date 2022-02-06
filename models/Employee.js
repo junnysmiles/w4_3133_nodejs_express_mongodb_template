@@ -86,9 +86,9 @@ EmployeeSchema.methods.getFormattedSalary = function() {
 }
 
 //2. Static method declararion
-EmployeeSchema.static.getEmployeeByFirstName = function(fnm) {
-  return this.find({firstname: fnm})
-}
+EmployeeSchema.static("getEmployeeByFirstName", function(value) {
+  return this.find({firstname: value})
+})
 
 //Writing Query Helpers
 EmployeeSchema.query.byFirstName = function(fnm) {
