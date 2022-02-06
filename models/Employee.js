@@ -78,7 +78,7 @@ const EmployeeSchema = new mongoose.Schema({
 //Writing Query Helpers
 
 
-
+// Pre Middleware
 EmployeeSchema.pre('save', (next) => {
   console.log("Before Save")
   let now = Date.now()
@@ -101,7 +101,7 @@ EmployeeSchema.pre('findOneAndUpdate', (next) => {
   next()
 });
 
-
+// Middleware POST
 EmployeeSchema.post('init', (doc) => {
   console.log('%s has been initialized from the db', doc._id);
 });

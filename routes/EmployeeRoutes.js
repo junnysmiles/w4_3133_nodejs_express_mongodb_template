@@ -14,7 +14,7 @@ app.get('/employees', async (req, res) => {
   //const employees = await employeeModel.find({}).select("firstname lastname salary").sort({'salary' : 'desc'});  
   
   try {
-    console.log(employees[0].surname)
+    console.log(employees[0].surname) // Alias for last name
     res.status(200).send(employees);
   } catch (err) {
     res.status(500).send(err);
